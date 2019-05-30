@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/layer.js"></script>
+</head>
+<body>
+    <div>我是窗口1</div>
+    <input type="button" id="test2" value="按钮2"><br>
+    <input type="button" value="点我关闭当前窗口" onclick="guan()">
+<script>
+    guan = function () {
+        var index =parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+    }
+    $('#test2').click(function () {
+        var index1 = layer.open({
+            type: 2,
+            title: '选择',
+            area: ['600px', '540px'], //宽高
+            fix: false, //不固定
+            maxmin: true,
+            shade: false,
+            content: 'Tan1',
+            success: function(layero,index){
+                //在回调方法中的第2个参数“index”表示的是当前弹窗的索引。
+                //通过layer.full方法将窗口放大。
+                layer.full(index);
+            }
+
+        })
+    })
+</script>
+</body>
+</html>
